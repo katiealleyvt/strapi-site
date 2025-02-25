@@ -1,48 +1,38 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { PageLink } from "@/components/page/pagelink";
 import { Bath, Calendar, Heart, Medal, Shield, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { fetchData } from '../api/api.js';
+import { HomePage, Hero, PageButton, DataResponse, Meta } from '../api/components.tsx';
 import React, { useEffect, useState } from 'react';
-import { parseJSON } from "date-fns";
+import { parseJSON, setDate } from "date-fns";
 
-type Button = {
-  color: string;
-  isExternal: boolean;
-  text: string;
-  url: string;
-};
-
-type Hero = {
-  id: number;
-  bgImage: string;
-  description: string;
-  heading: string;
-  buttons: Button[];
-};
-
-type HomePage = {
-  hero: Hero;
-};
 
 export default function Home() {
 
   const [homepage, setHomepage] = useState<HomePage | null>(null);
+  const [hero, setHero] = useState<Hero | undefined>(undefined);
+
 
   useEffect(() => {
     const getHomepage = async () => {
-      const result = await fetchData('/home-pages?populate[hero][populate]=*');
-      console.log(result);
-      setHomepage(result);
-    };
-    const setHomepage = async (data: object) => {
-      const parsedHero = data.data[0].hero[0];
-      let page:HomePage = {
-        hero: parsedHero
+      try {
+        const result = await fetchData('/home-pages?populate[hero][populate]=*');
+        const homepageData = result.data[0];
+
+        // Set homepage and hero state
+        setHomepage(homepageData);
+        setHero(homepageData?.hero[0]);
+
+        console.log('Hero:', homepageData?.hero[0]);
+      } catch (error) {
+        console.error('Error fetching data:', error);
       }
     };
+
     getHomepage();
   }, []);
 
@@ -59,15 +49,11 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-black/50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
-            <div className="text-white max-w-2xl">
-              <h1 className="text-5xl font-bold mb-6">{homepage?.hero.heading}</h1>
-              <p className="text-xl mb-8">Experience top-quality grooming and boarding services in a loving, safe environment.</p>
-              <Link href="/contact">
-                <Button size="lg" className="mr-4">Book Now</Button>
-              </Link>
-              <Link href="/services">
-                <Button variant="outline" size="lg" className="text-black">Our Services</Button>
-              </Link>
+            <div className="max-w-2xl">
+              <h1 className="text-5xl font-bold mb-6">{hero?.heading}</h1>
+              <p className="text-xl mb-8">{hero?.description}</p>
+              {hero?.buttons?.[0] && <PageLink {...hero.buttons[0]} />}
+              {hero?.buttons?.[1] && <PageLink {...hero.buttons[1]} />}
             </div>
           </div>
         </div>
