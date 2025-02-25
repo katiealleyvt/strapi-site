@@ -1,10 +1,31 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Bath, Calendar, Heart, Medal, Shield, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { fetchData } from '../api/api.js';
+import React, { useEffect, useState } from 'react';
+
+
 
 export default function Home() {
+
+  const [data, setData] = useState(
+    {
+      data: [{hero:[{heading:'Failed to load.', bgImage: '', description: 'Failed to load.'}]}]
+    },);
+
+  useEffect(() => {
+    const getData = async () => {
+      const result = await fetchData('/home-pages?populate[hero][populate]=*');
+      console.log(result);
+      setData(result);
+    };
+
+    getData();
+  }, []);
+
   return (
     <div>
       {/* Hero Section */}
@@ -19,7 +40,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
             <div className="text-white max-w-2xl">
-              <h1 className="text-5xl font-bold mb-6">Professional Care for Your Furry Friends</h1>
+              <h1 className="text-5xl font-bold mb-6">{data.data[0].hero[0].heading}</h1>
               <p className="text-xl mb-8">Experience top-quality grooming and boarding services in a loving, safe environment.</p>
               <Link href="/contact">
                 <Button size="lg" className="mr-4">Book Now</Button>
