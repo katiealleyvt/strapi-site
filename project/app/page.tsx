@@ -6,24 +6,44 @@ import Image from "next/image";
 import Link from "next/link";
 import { fetchData } from '../api/api.js';
 import React, { useEffect, useState } from 'react';
+import { parseJSON } from "date-fns";
 
+type Button = {
+  color: string;
+  isExternal: boolean;
+  text: string;
+  url: string;
+};
 
+type Hero = {
+  id: number;
+  bgImage: string;
+  description: string;
+  heading: string;
+  buttons: Button[];
+};
+
+type HomePage = {
+  hero: Hero;
+};
 
 export default function Home() {
 
-  const [data, setData] = useState(
-    {
-      data: [{hero:[{heading:'Failed to load.', bgImage: '', description: 'Failed to load.'}]}]
-    },);
+  const [homepage, setHomepage] = useState<HomePage | null>(null);
 
   useEffect(() => {
-    const getData = async () => {
+    const getHomepage = async () => {
       const result = await fetchData('/home-pages?populate[hero][populate]=*');
       console.log(result);
-      setData(result);
+      setHomepage(result);
     };
-
-    getData();
+    const setHomepage = async (data: object) => {
+      const parsedHero = data.data[0].hero[0];
+      let page:HomePage = {
+        hero: parsedHero
+      }
+    };
+    getHomepage();
   }, []);
 
   return (
@@ -40,7 +60,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
             <div className="text-white max-w-2xl">
-              <h1 className="text-5xl font-bold mb-6">{data.data[0].hero[0].heading}</h1>
+              <h1 className="text-5xl font-bold mb-6">{homepage?.hero.heading}</h1>
               <p className="text-xl mb-8">Experience top-quality grooming and boarding services in a loving, safe environment.</p>
               <Link href="/contact">
                 <Button size="lg" className="mr-4">Book Now</Button>
