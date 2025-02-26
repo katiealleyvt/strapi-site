@@ -1,15 +1,22 @@
-
+import { Color } from '../api/types'
 
 export interface PageButton {
-  color: string;
+  color: Color;
   isExternal: boolean;
   text: string;
   url: string;
 };
 
+export interface PageImage {
+  id: number;
+  name: string;
+  url: string;
+  height: number,
+  width: number
+};
 export interface Hero {
   id: number;
-  bgImage: string;
+  bgImage: PageImage;
   description: string;
   heading: string;
   buttons: PageButton[];

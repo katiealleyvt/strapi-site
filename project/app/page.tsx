@@ -5,7 +5,7 @@ import { PageLink } from "@/components/page/pagelink";
 import { Bath, Calendar, Heart, Medal, Shield, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { fetchData } from '../api/api.js';
+import { fetchData, API_URL, HOST } from '../api/api.js';
 import { HomePage, Hero, PageButton, DataResponse, Meta } from '../api/components.tsx';
 import React, { useEffect, useState } from 'react';
 import { parseJSON, setDate } from "date-fns";
@@ -36,19 +36,23 @@ export default function Home() {
     getHomepage();
   }, []);
 
+  const bgImage = `${HOST}${hero?.bgImage?.url}`;
+
   return (
     <div>
       {/* Hero Section */}
       <section className="relative h-[600px]">
-        <Image
-          src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b"
+        {hero?.bgImage?.url && <Image
+          //src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b"
+          src={bgImage}
           alt="Happy dog being groomed"
           fill
           className="object-cover"
           priority
-        />
+        />}
+        
         <div className="absolute inset-0 bg-black/50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center text-white">
             <div className="max-w-2xl">
               <h1 className="text-5xl font-bold mb-6">{hero?.heading}</h1>
               <p className="text-xl mb-8">{hero?.description}</p>
@@ -60,7 +64,7 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-16 bg-secondary">
+      <section className="py-16 bg-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center mb-12">Why Choose Pawfect?</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

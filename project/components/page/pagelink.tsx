@@ -6,12 +6,10 @@ import { HomePage, Hero, PageButton, DataResponse, Meta } from '../../api/compon
 
 export const PageLink: React.FC<PageButton> = ({ color, isExternal, text, url }) => {
 
-    // TODO: Let's make a better way to do this.
-    var textColor = color == "primary" ? "white" : "black";
-    var buttonClass:string = `mr-4 bg-${color} !text-${textColor}`;
+
     return(
         <Link href={url}>
-                <Button size="lg" className={buttonClass}>{text}</Button>
+                <Button size="lg" className='mr-4' variant={color}>{text}</Button>
         </Link>
     );
 }

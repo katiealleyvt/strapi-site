@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-
-const API_URL = 'http://localhost:1337/api'; // Strapi server URL
+export const HOST = "http://localhost:1337";
+export const API_URL = `${HOST}/api`; 
 
 export const fetchData = async (endpoint) => {
   try {
