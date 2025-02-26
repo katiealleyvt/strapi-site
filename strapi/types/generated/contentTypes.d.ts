@@ -369,6 +369,36 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiColorColor extends Struct.SingleTypeSchema {
+  collectionName: 'colors';
+  info: {
+    displayName: 'Color';
+    pluralName: 'colors';
+    singularName: 'color';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    bgColor: Schema.Attribute.Enumeration<
+      ['primary', 'secondary', 'tertiary', 'white', 'black']
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::color.color'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    textColor: Schema.Attribute.Enumeration<
+      ['primary', 'secondary', 'tertiary', 'white', 'black']
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiHomePageHomePage extends Struct.CollectionTypeSchema {
   collectionName: 'home_pages';
   info: {
@@ -906,6 +936,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::color.color': ApiColorColor;
       'api::home-page.home-page': ApiHomePageHomePage;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

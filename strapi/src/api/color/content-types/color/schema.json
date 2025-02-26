@@ -1,0 +1,34 @@
+{
+  "kind": "singleType",
+  "collectionName": "colors",
+  "info": {
+    "singularName": "color",
+    "pluralName": "colors",
+    "displayName": "Color"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "bgColor": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary",
+        "tertiary",
+        "white",
+        "black"
+      ]
+    },
+    "textColor": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary",
+        "tertiary",
+        "white",
+        "black"
+      ]
+    }
+  }
+}

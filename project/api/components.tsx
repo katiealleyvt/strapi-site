@@ -1,4 +1,4 @@
-import { Color } from '../api/types'
+import { Color, Icon } from '../api/types'
 
 export interface PageButton {
   color: Color;
@@ -22,6 +22,21 @@ export interface Hero {
   buttons: PageButton[];
 };
 
+export interface Features {
+  id: number;
+  bgColor: Color;
+  textColor: Color;
+  header: string;
+  cards: Card[]
+};
+export interface Card {
+  id: number;
+  bgColor: Color;
+  textColor: Color;
+  title: string;
+  description: string;
+  svg: Icon
+};
 export interface HomePage extends DataItem {
     hero: Hero[];
 }

@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_blocks_features",
+  "info": {
+    "displayName": "Features",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "header": {
+      "type": "string"
+    },
+    "bgColor": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary",
+        "tertiary",
+        "white",
+        "black"
+      ]
+    },
+    "textColor": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary",
+        "tertiary",
+        "white",
+        "black"
+      ]
+    },
+    "Cards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.card"
+    }
+  }
+}

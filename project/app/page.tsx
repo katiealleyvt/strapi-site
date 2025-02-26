@@ -6,7 +6,7 @@ import { Bath, Calendar, Heart, Medal, Shield, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { fetchData, API_URL, HOST } from '../api/api.js';
-import { HomePage, Hero, PageButton, DataResponse, Meta } from '../api/components.tsx';
+import { HomePage, Hero, PageButton, DataResponse, Meta, Features } from '../api/components.tsx';
 import React, { useEffect, useState } from 'react';
 import { parseJSON, setDate } from "date-fns";
 
@@ -15,6 +15,7 @@ export default function Home() {
 
   const [homepage, setHomepage] = useState<HomePage | null>(null);
   const [hero, setHero] = useState<Hero | undefined>(undefined);
+  const [features, setFeatures] = useState<Features | undefined>(undefined);
 
 
   useEffect(() => {
@@ -26,8 +27,9 @@ export default function Home() {
         // Set homepage and hero state
         setHomepage(homepageData);
         setHero(homepageData?.hero[0]);
+        setFeatures(homepageData?.features[0])
 
-        console.log('Hero:', homepageData?.hero[0]);
+        console.log('Features:', homepageData?.features[0]);
       } catch (error) {
         console.error('Error fetching data:', error);
       }

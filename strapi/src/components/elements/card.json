@@ -1,0 +1,43 @@
+{
+  "collectionName": "components_elements_cards",
+  "info": {
+    "displayName": "Card"
+  },
+  "options": {},
+  "attributes": {
+    "svg": {
+      "type": "enumeration",
+      "enum": [
+        "medal",
+        "heart",
+        "shield"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "bgColor": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary",
+        "tertiary",
+        "white",
+        "black"
+      ]
+    },
+    "textColor": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary",
+        "tertiary",
+        "white",
+        "black"
+      ]
+    }
+  }
+}
