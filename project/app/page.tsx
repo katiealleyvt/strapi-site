@@ -72,11 +72,11 @@ export default function Home() {
           <h2 className={featuresText}>{features?.header}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {features?.Cards.map((card, index) => (
-         <Card key={card.id}>
+         <Card key={card.id} color={card.bgColor || "white"}>
          <CardHeader>
            <Medal className="w-12 h-12 text-primary mb-4" />
-           <CardTitle>{card.title}</CardTitle>
-           <CardDescription>{card.description}</CardDescription>
+           <CardTitle color={card.textColor || "black"}>{card.title}</CardTitle>
+           <CardDescription color={card.textColor || "black"}>{card.description}</CardDescription>
          </CardHeader>
        </Card>
           ))}

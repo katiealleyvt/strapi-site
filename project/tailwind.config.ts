@@ -31,10 +31,16 @@ const config: Config = {
           foreground: 'hsl(var(--popover-foreground))',
         },
         primary: {
-          DEFAULT: '#b8e900'
+          DEFAULT: '#b8e900',
+          muted: '#b8e874'
         },
         secondary: {
           DEFAULT: '#000000',
+          muted: '#808080'
+        },
+        black: {
+          DEFAULT: '#000000',
+          muted: '#808080'
         },
         muted: {
           DEFAULT: 'hsl(var(--muted))',

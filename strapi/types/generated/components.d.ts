@@ -20,6 +20,7 @@ export interface BlocksFeatures extends Struct.ComponentSchema {
 export interface BlocksHero extends Struct.ComponentSchema {
   collectionName: 'components_blocks_heroes';
   info: {
+    description: '';
     displayName: 'Hero';
   };
   attributes: {
@@ -33,10 +34,13 @@ export interface BlocksHero extends Struct.ComponentSchema {
 export interface ElementsButton extends Struct.ComponentSchema {
   collectionName: 'components_elements_buttons';
   info: {
+    description: '';
     displayName: 'Button';
   };
   attributes: {
-    color: Schema.Attribute.Enumeration<['primary', 'secondary', 'tertiary']>;
+    color: Schema.Attribute.Enumeration<
+      ['primary', 'secondary', 'tertiary', 'black', 'white']
+    >;
     isExternal: Schema.Attribute.Boolean;
     text: Schema.Attribute.String;
     url: Schema.Attribute.String;
