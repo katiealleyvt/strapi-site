@@ -402,6 +402,7 @@ export interface ApiColorColor extends Struct.SingleTypeSchema {
 export interface ApiHomePageHomePage extends Struct.CollectionTypeSchema {
   collectionName: 'home_pages';
   info: {
+    description: '';
     displayName: 'Home Page';
     pluralName: 'home-pages';
     singularName: 'home-page';
@@ -410,10 +411,10 @@ export interface ApiHomePageHomePage extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    blocks: Schema.Attribute.DynamicZone<['blocks.hero', 'blocks.features']>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    hero: Schema.Attribute.DynamicZone<['blocks.hero']>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

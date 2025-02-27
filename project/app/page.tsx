@@ -21,15 +21,14 @@ export default function Home() {
   useEffect(() => {
     const getHomepage = async () => {
       try {
-        const result = await fetchData('/home-pages?populate[hero][populate]=*');
+        const result = await fetchData('/home-pages?populate[blocks][populate]=*');
         const homepageData = result.data[0];
 
         // Set homepage and hero state
         setHomepage(homepageData);
-        setHero(homepageData?.hero[0]);
-        setFeatures(homepageData?.features[0])
+        setHero(homepageData?.blocks[0]);
+        setFeatures(homepageData?.blocks[1])
 
-        console.log('Features:', homepageData?.features[0]);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -37,9 +36,11 @@ export default function Home() {
 
     getHomepage();
   }, []);
-
+  console.log(features)
   const bgImage = `${HOST}${hero?.bgImage?.url}`;
 
+  const featuresSection = `py-16 bg-${features?.bgColor}`;
+  const featuresText = `text-3xl font-bold text-center mb-12 text-${features?.textColor}`
   return (
     <div>
       {/* Hero Section */}
@@ -66,31 +67,21 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-16 bg-primary">
+      <section className={featuresSection}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12">Why Choose Pawfect?</h2>
+          <h2 className={featuresText}>{features?.header}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card>
-              <CardHeader>
-                <Medal className="w-12 h-12 text-primary mb-4" />
-                <CardTitle>Expert Groomers</CardTitle>
-                <CardDescription>Certified professional groomers with years of experience</CardDescription>
-              </CardHeader>
-            </Card>
-            <Card>
-              <CardHeader>
-                <Heart className="w-12 h-12 text-primary mb-4" />
-                <CardTitle>Loving Care</CardTitle>
-                <CardDescription>We treat every pet as if they were our own</CardDescription>
-              </CardHeader>
-            </Card>
-            <Card>
-              <CardHeader>
-                <Shield className="w-12 h-12 text-primary mb-4" />
-                <CardTitle>Safe Environment</CardTitle>
-                <CardDescription>Modern, clean facilities with 24/7 monitoring</CardDescription>
-              </CardHeader>
-            </Card>
+          {features?.Cards.map((card, index) => (
+         <Card key={card.id}>
+         <CardHeader>
+           <Medal className="w-12 h-12 text-primary mb-4" />
+           <CardTitle>{card.title}</CardTitle>
+           <CardDescription>{card.description}</CardDescription>
+         </CardHeader>
+       </Card>
+          ))}
+           
+          
           </div>
         </div>
       </section>

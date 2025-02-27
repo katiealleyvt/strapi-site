@@ -4,16 +4,18 @@
   "info": {
     "singularName": "home-page",
     "pluralName": "home-pages",
-    "displayName": "Home Page"
+    "displayName": "Home Page",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
-    "hero": {
+    "blocks": {
       "type": "dynamiczone",
       "components": [
-        "blocks.hero"
+        "blocks.hero",
+        "blocks.features"
       ]
     }
   }

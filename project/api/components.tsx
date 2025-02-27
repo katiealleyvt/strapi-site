@@ -14,20 +14,22 @@ export interface PageImage {
   height: number,
   width: number
 };
-export interface Hero {
+export interface Features extends Block {
+  id: number;
+  header: string,
+  bgColor: Color,
+  textColor: Color,
+  Cards: Card[]
+};
+export interface Hero extends Block {
   id: number;
   bgImage: PageImage;
   description: string;
   heading: string;
   buttons: PageButton[];
 };
-
-export interface Features {
+export interface Block {
   id: number;
-  bgColor: Color;
-  textColor: Color;
-  header: string;
-  cards: Card[]
 };
 export interface Card {
   id: number;
@@ -38,12 +40,11 @@ export interface Card {
   svg: Icon
 };
 export interface HomePage extends DataItem {
-    hero: Hero[];
+    blocks: Block[];
 }
   export interface DataItem {
     createdAt: string;
     documentId: string;
-    hero: Hero[];
     id: number;
     publishedAt: string;
     updatedAt: string;

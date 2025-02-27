@@ -3,7 +3,6 @@ import type { Schema, Struct } from '@strapi/strapi';
 export interface BlocksFeatures extends Struct.ComponentSchema {
   collectionName: 'components_blocks_features';
   info: {
-    description: '';
     displayName: 'Features';
   };
   attributes: {
