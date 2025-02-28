@@ -2,13 +2,17 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { PageLink } from "@/components/page/pagelink";
+import MarkdownRenderer from "@/components/page/markdown-renderer";
+
 import { Bath, Calendar, Heart, Medal, Shield, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { fetchData, API_URL, HOST } from '../api/api.js';
-import { HomePage, Hero, PageButton, DataResponse, Meta, Features } from '../api/components.tsx';
+import { HomePage, Services, Hero, PageButton, DataResponse, Meta, Features } from '../api/components.tsx';
 import React, { useEffect, useState } from 'react';
 import { parseJSON, setDate } from "date-fns";
+import Markdown from 'react-markdown'
+
 
 
 export default function Home() {
@@ -16,6 +20,7 @@ export default function Home() {
   const [homepage, setHomepage] = useState<HomePage | null>(null);
   const [hero, setHero] = useState<Hero | undefined>(undefined);
   const [features, setFeatures] = useState<Features | undefined>(undefined);
+  const [services, setServices] = useState<Services | undefined>(undefined);
 
 
   useEffect(() => {
@@ -23,11 +28,12 @@ export default function Home() {
       try {
         const result = await fetchData('/home-pages?populate[blocks][populate]=*');
         const homepageData = result.data[0];
-
+        console.log(result);
         // Set homepage and hero state
         setHomepage(homepageData);
         setHero(homepageData?.blocks[0]);
         setFeatures(homepageData?.blocks[1])
+        setServices(homepageData?.blocks[2])
 
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -36,12 +42,19 @@ export default function Home() {
 
     getHomepage();
   }, []);
-  console.log(features)
+
+  
+  //console.log(services)
   const bgImage = `${HOST}${hero?.bgImage?.url}`;
 
   const featuresSection = `py-16 bg-${features?.bgColor}`;
   const featuresText = `text-3xl font-bold text-center mb-12 text-${features?.textColor}`
   const featuresSvg = `w-12 h-12 text-primary mb-4 text-${features?.bgColor}`
+  
+  const servicesSection = `py-16 bg-${services?.bgColor}}`;
+  const servicesText = `text-3xl font-bold text-center mb-12 ${services?.textColor}`;
+  
+
   return (
     <div>
       {/* Hero Section */}
@@ -91,38 +104,22 @@ export default function Home() {
       </section>
 
       {/* Services Preview */}
-      <section className="py-16">
+      <section className={servicesSection}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12">Our Services</h2>
+          <h2 className={servicesText}>{services?.header}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Card>
-              <CardHeader>
-                <Bath className="w-12 h-12 text-primary mb-4" />
-                <CardTitle>Grooming Services</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2">
-                  <li className="flex items-center"><Star className="w-4 h-4 mr-2" /> Full Grooming Package</li>
-                  <li className="flex items-center"><Star className="w-4 h-4 mr-2" /> Bath & Brush</li>
-                  <li className="flex items-center"><Star className="w-4 h-4 mr-2" /> Nail Trimming</li>
-                  <li className="flex items-center"><Star className="w-4 h-4 mr-2" /> Teeth Cleaning</li>
-                </ul>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <Calendar className="w-12 h-12 text-primary mb-4" />
-                <CardTitle>Boarding Services</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2">
-                  <li className="flex items-center"><Star className="w-4 h-4 mr-2" /> Luxury Suites</li>
-                  <li className="flex items-center"><Star className="w-4 h-4 mr-2" /> Daily Exercise</li>
-                  <li className="flex items-center"><Star className="w-4 h-4 mr-2" /> Playtime Sessions</li>
-                  <li className="flex items-center"><Star className="w-4 h-4 mr-2" /> 24/7 Care</li>
-                </ul>
-              </CardContent>
-            </Card>
+          {services?.services.map((service, index) => (
+            
+            <Card key={service.id}>
+            <CardHeader>
+              <Bath className="w-12 h-12 text-primary mb-4" />
+              <CardTitle>{service.title}</CardTitle>
+            </CardHeader>
+            <CardContent className="list-style-star">
+              <Markdown>{service.description}</Markdown>
+            </CardContent>
+          </Card>
+          ))}
           </div>
         </div>
       </section>

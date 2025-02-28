@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_elements_markdown_list_items",
+  "info": {
+    "displayName": "MarkdownListItem",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    }
+  }
+}

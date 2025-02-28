@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_elements_markdown_lists",
+  "info": {
+    "displayName": "MarkdownList"
+  },
+  "options": {},
+  "attributes": {
+    "MarkdownListItem": {
+      "displayName": "MarkdownListItem",
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.markdown-list-item"
+    },
+    "listStyle": {
+      "type": "string"
+    }
+  }
+}

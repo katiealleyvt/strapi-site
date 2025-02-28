@@ -1,20 +1,12 @@
 {
-  "collectionName": "components_elements_cards",
+  "collectionName": "components_blocks_services",
   "info": {
-    "displayName": "Card",
+    "displayName": "Services",
     "description": ""
   },
   "options": {},
   "attributes": {
-    "svg": {
-      "type": "enumeration",
-      "enum": [
-        "medal",
-        "heart",
-        "shield"
-      ]
-    },
-    "title": {
+    "header": {
       "type": "string"
     },
     "bgColor": {
@@ -37,8 +29,13 @@
         "black"
       ]
     },
-    "description": {
-      "type": "richtext"
+    "services": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.card"
+    },
+    "listStyle": {
+      "type": "string"
     }
   }
 }

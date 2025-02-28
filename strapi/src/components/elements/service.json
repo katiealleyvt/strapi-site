@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_elements_services",
+  "info": {
+    "displayName": "Service",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "svg": {
+      "type": "enumeration",
+      "enum": [
+        "bath tub",
+        "calendar"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "textColor": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary",
+        "tertiary",
+        "black",
+        "white"
+      ]
+    },
+    "list": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.markdown-list-item"
+    },
+    "listStyle": {
+      "type": "string"
+    }
+  }
+}

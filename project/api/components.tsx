@@ -28,6 +28,13 @@ export interface Hero extends Block {
   heading: string;
   buttons: PageButton[];
 };
+export interface Services extends Block {
+  id: number;
+  header: string,
+  bgColor: Color,
+  textColor: Color,
+  services: Card[]
+};
 export interface Block {
   id: number;
 };
@@ -38,6 +45,10 @@ export interface Card {
   title: string;
   description: string;
   svg: Icon
+};
+export interface MarkdownListItem {
+  id: number;
+  text: string;
 };
 export interface HomePage extends DataItem {
     blocks: Block[];

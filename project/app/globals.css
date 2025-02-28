@@ -80,3 +80,7 @@
     @apply bg-background text-foreground;
   }
 }
+
+.list-style-star ul{
+  list-style-type: '⭐';
+}
