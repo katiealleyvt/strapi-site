@@ -41,6 +41,7 @@ export default function Home() {
 
   const featuresSection = `py-16 bg-${features?.bgColor}`;
   const featuresText = `text-3xl font-bold text-center mb-12 text-${features?.textColor}`
+  const featuresSvg = `w-12 h-12 text-primary mb-4 text-${features?.bgColor}`
   return (
     <div>
       {/* Hero Section */}
@@ -74,7 +75,10 @@ export default function Home() {
           {features?.Cards.map((card, index) => (
          <Card key={card.id} color={card.bgColor || "white"}>
          <CardHeader>
-           <Medal className="w-12 h-12 text-primary mb-4" />
+          {card.svg == "medal" && <Medal className={featuresSvg}/>}
+          {card.svg == "heart" && <Heart className={featuresSvg} />}
+          {card.svg == "shield" && <Shield className={featuresSvg} />}
+
            <CardTitle color={card.textColor || "black"}>{card.title}</CardTitle>
            <CardDescription color={card.textColor || "black"}>{card.description}</CardDescription>
          </CardHeader>

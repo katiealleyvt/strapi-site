@@ -42,6 +42,10 @@ const config: Config = {
           DEFAULT: '#000000',
           muted: '#808080'
         },
+        white: {
+          DEFAULT: '#ffffff',
+          muted: '#808080'
+        },
         muted: {
           DEFAULT: 'hsl(var(--muted))',
           foreground: 'hsl(var(--muted-foreground))',
