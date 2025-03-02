@@ -1,6 +1,14 @@
+
+
 import './globals.css';
 import { Inter } from 'next/font/google';
 import { Metadata } from 'next';
+import React, { useEffect, useState } from 'react';
+import { fetchData, API_URL, HOST } from '../api/api.js';
+import Image from "next/image";
+import Header from '@/components/page/header.tsx';
+
+
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -9,46 +17,7 @@ export const metadata: Metadata = {
   description: 'Professional dog grooming and boarding services',
 };
 
-// Client-side navigation component
-function Navigation() {
-  'use client';
-  
-  return (
-    <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-      <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center">
-          <PawPrint className="h-8 w-8 text-primary" />
-          <span className="ml-2 text-2xl font-bold text-primary">Pawfect</span>
 
-              </Link>
-        <NavigationMenu>
-          <NavigationMenuList>
-            <NavigationMenuItem>
-              <Link href="/" legacyBehavior passHref>
-                <NavigationMenuLink className="px-3 py-2">Home</NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/services" legacyBehavior passHref>
-                <NavigationMenuLink className="px-3 py-2">Services</NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/faq" legacyBehavior passHref>
-                <NavigationMenuLink className="px-3 py-2">FAQ</NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/contact" legacyBehavior passHref>
-                <NavigationMenuLink className="px-3 py-2">Contact</NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
-      </div>
-    </nav>
-  );
-}
 
 // Client-side footer component
 function Footer() {
@@ -88,20 +57,21 @@ function Footer() {
 }
 
 // Import these after the client components to avoid "use client" directive issues
-import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from '@/components/ui/navigation-menu';
-import Link from 'next/link';
-import { PawPrint } from 'lucide-react';
+
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+
+  
+
   return (
     <html lang="en">
       <body className={inter.className}>
         <header className="border-b">
-          <Navigation />
+          <Header/>
         </header>
         <main>{children}</main>
         <Footer />

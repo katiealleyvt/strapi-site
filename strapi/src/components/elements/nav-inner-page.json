@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_elements_nav_inner_pages",
+  "info": {
+    "displayName": "NavInnerPage",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "url": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import { Color, Icon } from '../api/types'
+import { Color, Icon } from './types'
 
 export interface PageButton {
   color: Color;
@@ -46,12 +46,30 @@ export interface Card {
   description: string;
   svg: Icon
 };
+export interface Header {
+  id: number;
+  logo: PageImage;
+  bgColor: Color;
+  nav: HeaderNav;
+};
+export interface NavPage {
+  id: number;
+  title: string;
+  url: string;
+  innerPages: NavPage[]
+};
+export interface HeaderNav {
+  id: number;
+  menuItems: NavPage[]
+
+};
 export interface MarkdownListItem {
   id: number;
   text: string;
 };
 export interface HomePage extends DataItem {
     blocks: Block[];
+    header: Header;
 }
   export interface DataItem {
     createdAt: string;

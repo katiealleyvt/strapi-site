@@ -110,6 +110,45 @@ export interface ElementsMarkdownListItem extends Struct.ComponentSchema {
   };
 }
 
+export interface ElementsNavInnerPage extends Struct.ComponentSchema {
+  collectionName: 'components_elements_nav_inner_pages';
+  info: {
+    description: '';
+    displayName: 'NavInnerPage';
+  };
+  attributes: {
+    title: Schema.Attribute.String;
+    url: Schema.Attribute.String;
+  };
+}
+
+export interface ElementsNavigation extends Struct.ComponentSchema {
+  collectionName: 'components_elements_navigations';
+  info: {
+    displayName: 'Navigation';
+  };
+  attributes: {
+    menuItems: Schema.Attribute.Component<'elements.navigation-page', true>;
+    orientation: Schema.Attribute.Enumeration<['left', 'center', 'right']>;
+    textColor: Schema.Attribute.Enumeration<
+      ['primary', 'secondary', 'tertiary', 'black', 'white']
+    >;
+  };
+}
+
+export interface ElementsNavigationPage extends Struct.ComponentSchema {
+  collectionName: 'components_elements_navigation_pages';
+  info: {
+    description: '';
+    displayName: 'NavPage';
+  };
+  attributes: {
+    innerPages: Schema.Attribute.Component<'elements.nav-inner-page', true>;
+    title: Schema.Attribute.String;
+    url: Schema.Attribute.String;
+  };
+}
+
 export interface ElementsService extends Struct.ComponentSchema {
   collectionName: 'components_elements_services';
   info: {
@@ -137,6 +176,9 @@ declare module '@strapi/strapi' {
       'elements.card': ElementsCard;
       'elements.markdown-list': ElementsMarkdownList;
       'elements.markdown-list-item': ElementsMarkdownListItem;
+      'elements.nav-inner-page': ElementsNavInnerPage;
+      'elements.navigation': ElementsNavigation;
+      'elements.navigation-page': ElementsNavigationPage;
       'elements.service': ElementsService;
     }
   }

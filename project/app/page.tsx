@@ -2,13 +2,12 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { PageLink } from "@/components/page/pagelink";
-import MarkdownRenderer from "@/components/page/markdown-renderer";
 
 import { Bath, Calendar, Heart, Medal, Shield, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { fetchData, API_URL, HOST } from '../api/api.js';
-import { HomePage, Services, Hero, PageButton, DataResponse, Meta, Features } from '../api/components.tsx';
+import { HomePage, Services, Hero, PageButton, DataResponse, Meta, Features } from '../api/interfaces.tsx';
 import React, { useEffect, useState } from 'react';
 import { parseJSON, setDate } from "date-fns";
 import Markdown from 'react-markdown'

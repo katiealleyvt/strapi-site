@@ -18,6 +18,11 @@
         "blocks.features",
         "blocks.services"
       ]
+    },
+    "header": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::header.header"
     }
   }
 }

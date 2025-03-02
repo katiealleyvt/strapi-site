@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_elements_navigations",
+  "info": {
+    "displayName": "Navigation"
+  },
+  "options": {},
+  "attributes": {
+    "menuItems": {
+      "displayName": "NavigationPage",
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.navigation-page"
+    },
+    "textColor": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary",
+        "tertiary",
+        "black",
+        "white"
+      ]
+    },
+    "orientation": {
+      "type": "enumeration",
+      "enum": [
+        "left",
+        "center",
+        "right"
+      ]
+    }
+  }
+}
