@@ -1,6 +1,5 @@
 'use client';
 import * as interfaces from "@/api/interfaces";
-import { Link } from "lucide-react";
 import Image from "next/image";
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from "../ui/navigation-menu";
 import { useEffect, useState } from "react";
@@ -24,8 +23,8 @@ export default function Header({
     useEffect(() => {
       const getHeader = async () => {
         try {
-          const result = await fetchData('/headers/hbz5cg1g5ij7nje8yz0m1a5m?populate=*');
-          const headerData = result.data;
+          const result = await fetchData('/headers?populate[navigation][populate]=*&populate[logo][populate]=*');
+          const headerData = result.data[0];
           // Set homepage and hero state
           setHeader(headerData);
 
@@ -39,10 +38,9 @@ export default function Header({
   
     
     console.log(header)
-    const logoImage = `${HOST}${header?.logo?.url}`;
 
     return(
-    <Navigation />
+    <Navigation header={header}/>
     );
 }
 
@@ -51,44 +49,34 @@ export default function Header({
 const Navigation: React.FC<NavigationProps> = ({ header }) => {
   'use client';
   
-  
+  const logoImage = `${HOST}${header?.logo?.url}`;
+  console.log(logoImage);
   return (
     <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
       <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center">
+        <a href="/">
           {header?.logo?.url && <Image
                     //src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b"
-                    src={header?.logo?.url}
-                    alt="Happy dog being groomed"
-                    fill
-                    className="object-cover"
-                    priority
+                    src={logoImage}
+                    alt="Logo"
+                    width="30"
+                    style={{width:"100%", height:"30px"}}
+                    height="30"
                   />}
-              </Link>
-        <NavigationMenu>
+                  </a>
+          {header?.navigation && 
+          <NavigationMenu>
           <NavigationMenuList>
-            <NavigationMenuItem>
-              <Link href="/">
-                <NavigationMenuLink className="px-3 py-2">Home</NavigationMenuLink>
-              </Link>
+          {header?.navigation.menuItems.map((page, index) => (
+            <NavigationMenuItem key={page.id}>
+              <a href={page.url}>
+                <NavigationMenuLink className="px-3 py-2">{page.title}</NavigationMenuLink>
+              </a>
             </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/services">
-                <NavigationMenuLink className="px-3 py-2">Services</NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/faq">
-                <NavigationMenuLink className="px-3 py-2">FAQ</NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/contact">
-                <NavigationMenuLink className="px-3 py-2">Contact</NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
+          ))}
           </NavigationMenuList>
         </NavigationMenu>
+        }
       </div>
     </nav>
   );

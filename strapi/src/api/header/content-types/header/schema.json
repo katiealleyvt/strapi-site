@@ -4,27 +4,23 @@
   "info": {
     "singularName": "header",
     "pluralName": "headers",
-    "displayName": "Header"
+    "displayName": "Header",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
     "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
-    },
-    "nav": {
-      "displayName": "Navigation",
-      "type": "component",
-      "repeatable": false,
-      "component": "elements.navigation"
+      ]
     },
     "bgColor": {
       "type": "enumeration",
@@ -35,6 +31,11 @@
         "black",
         "white"
       ]
+    },
+    "navigation": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::navigation.navigation"
     }
   }
 }

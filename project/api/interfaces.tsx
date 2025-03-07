@@ -1,4 +1,4 @@
-import { Color, Icon } from './types'
+import { Color, Icon, Orientation } from './types'
 
 export interface PageButton {
   color: Color;
@@ -50,7 +50,7 @@ export interface Header {
   id: number;
   logo: PageImage;
   bgColor: Color;
-  nav: HeaderNav;
+  navigation: Navigation;
 };
 export interface NavPage {
   id: number;
@@ -58,10 +58,11 @@ export interface NavPage {
   url: string;
   innerPages: NavPage[]
 };
-export interface HeaderNav {
+export interface Navigation {
   id: number;
   menuItems: NavPage[]
-
+  orientation: Orientation;
+  textColor: Color
 };
 export interface MarkdownListItem {
   id: number;

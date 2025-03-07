@@ -122,20 +122,6 @@ export interface ElementsNavInnerPage extends Struct.ComponentSchema {
   };
 }
 
-export interface ElementsNavigation extends Struct.ComponentSchema {
-  collectionName: 'components_elements_navigations';
-  info: {
-    displayName: 'Navigation';
-  };
-  attributes: {
-    menuItems: Schema.Attribute.Component<'elements.navigation-page', true>;
-    orientation: Schema.Attribute.Enumeration<['left', 'center', 'right']>;
-    textColor: Schema.Attribute.Enumeration<
-      ['primary', 'secondary', 'tertiary', 'black', 'white']
-    >;
-  };
-}
-
 export interface ElementsNavigationPage extends Struct.ComponentSchema {
   collectionName: 'components_elements_navigation_pages';
   info: {
@@ -177,7 +163,6 @@ declare module '@strapi/strapi' {
       'elements.markdown-list': ElementsMarkdownList;
       'elements.markdown-list-item': ElementsMarkdownListItem;
       'elements.nav-inner-page': ElementsNavInnerPage;
-      'elements.navigation': ElementsNavigation;
       'elements.navigation-page': ElementsNavigationPage;
       'elements.service': ElementsService;
     }

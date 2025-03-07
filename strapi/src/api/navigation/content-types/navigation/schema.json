@@ -1,12 +1,16 @@
 {
-  "collectionName": "components_elements_navigations",
+  "kind": "collectionType",
+  "collectionName": "navigations",
   "info": {
+    "singularName": "navigation",
+    "pluralName": "navigations",
     "displayName": "Navigation"
   },
-  "options": {},
+  "options": {
+    "draftAndPublish": true
+  },
   "attributes": {
     "menuItems": {
-      "displayName": "NavigationPage",
       "type": "component",
       "repeatable": true,
       "component": "elements.navigation-page"
@@ -24,9 +28,9 @@
     "orientation": {
       "type": "enumeration",
       "enum": [
-        "left",
+        "right",
         "center",
-        "right"
+        "left"
       ]
     }
   }

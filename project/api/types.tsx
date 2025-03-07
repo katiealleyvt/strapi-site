@@ -3,3 +3,5 @@ export type Color =
 
 export type Icon = 
     "default" | "medal" | "heart" | "shield" | "bathtub" | "calendar" | null | undefined;
+export type Orientation = 
+    "left" | "center" | "right" | null | undefined;
