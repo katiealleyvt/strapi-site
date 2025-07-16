@@ -1,7 +1,7 @@
 # /project directory
 Contains frontend<br>
 ## Credit:
-- Used a strapi generated template
+- Used a strapi generated template from bolt
 - shadcn/ui components
 - Lucide react icons
 <br>
