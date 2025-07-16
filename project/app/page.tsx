@@ -16,6 +16,8 @@ import Markdown from 'react-markdown'
 
 export default function Home() {
 
+  
+
   const [homepage, setHomepage] = useState<HomePage | null>(null);
   const [hero, setHero] = useState<Hero | undefined>(undefined);
   const [features, setFeatures] = useState<Features | undefined>(undefined);
@@ -48,7 +50,7 @@ export default function Home() {
 
   const featuresSection = `py-16 bg-${features?.bgColor}`;
   const featuresText = `text-3xl font-bold text-center mb-12 text-${features?.textColor}`
-  const featuresSvg = `w-12 h-12 text-primary mb-4 text-${features?.bgColor}`
+  const featuresSvg = `w-12 h-12 mb-4 text-${features?.textColor}`
   
   const servicesSection = `py-16 bg-${services?.bgColor}}`;
   const servicesText = `text-3xl font-bold text-center mb-12 ${services?.textColor}`;
@@ -109,12 +111,12 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {services?.services.map((service, index) => (
             
-            <Card key={service.id}>
+            <Card key={service.id} color={service.bgColor || "black"}>
             <CardHeader>
-              <Bath className="w-12 h-12 text-primary mb-4" />
-              <CardTitle>{service.title}</CardTitle>
+              <Bath className="w-12 h-12 text-secondary mb-4" />
+              <CardTitle color={service.textColor || "white"}>{service.title}</CardTitle>
             </CardHeader>
-            <CardContent className="list-style-star">
+            <CardContent className="list-style-star" color={service.textColor || "white"}>
               <Markdown>{service.description}</Markdown>
             </CardContent>
           </Card>

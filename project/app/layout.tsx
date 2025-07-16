@@ -1,22 +1,15 @@
 
-
+'use client'
 import './globals.css';
 import { Inter } from 'next/font/google';
 import { Metadata } from 'next';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { fetchData, API_URL, HOST } from '../api/api.js';
 import Image from "next/image";
 import Header from '@/components/page/header.tsx';
 
 
-
 const inter = Inter({ subsets: ['latin'] });
-
-export const metadata: Metadata = {
-  title: 'Pawfect Grooming & Boarding',
-  description: 'Professional dog grooming and boarding services',
-};
-
 
 
 // Client-side footer component
@@ -24,7 +17,7 @@ function Footer() {
   'use client';
 
   return (
-    <footer className="bg-primary text-primary-foreground mt-16">
+    <footer className="bg-primary text-white mt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
@@ -49,7 +42,7 @@ function Footer() {
           </div>
         </div>
         <div className="mt-8 pt-8 border-t border-primary-foreground/10 text-center">
-          <p>&copy; 2024 Pawfect Grooming & Boarding. All rights reserved.</p>
+          <p>&copy; 2024 Happy Tails Pet Grooming. All rights reserved.</p>
         </div>
       </div>
     </footer>
@@ -70,7 +63,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <header className="border-b">
+        <header className="border-b bg-primary">
           <Header/>
         </header>
         <main>{children}</main>

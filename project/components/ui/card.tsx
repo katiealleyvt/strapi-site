@@ -7,15 +7,13 @@ const Card = React.forwardRef<
   React.HTMLAttributes<HTMLDivElement> & {color?: string}
   >(({ className, color, ...props }, ref) => {
    
-    const classStr = `rounded-lg shadow-sm`
   return(
   <div
     ref={ref}
     className={cn(
-      classStr,
+      `rounded-lg shadow-sm bg-${color}`,
       className
     )}
-    style={{backgroundColor: color, borderColor: color}}
     {...props}
   />);
 });
@@ -57,12 +55,11 @@ const CardDescription = React.forwardRef<
   React.HTMLAttributes<HTMLHeadingElement> & { color?: string }
 >(({ className, color, ...props }, ref) => {
  
-  const classStr = `text-sm text-${color}-muted`
 
   return (
     <p
       ref={ref}
-      className={cn(classStr, className)}
+      className={cn(`text-sm text-${color}`, className)}
       {...props}
     />
     );
@@ -71,9 +68,9 @@ CardDescription.displayName = 'CardDescription';
 
 const CardContent = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn('p-6 pt-0', className)} {...props} />
+  React.HTMLAttributes<HTMLDivElement> & { color?: string }
+>(({ className, color, ...props }, ref) => (
+  <div ref={ref} className={cn(`p-6 pt-0 text-${color}`, className)} {...props} />
 ));
 CardContent.displayName = 'CardContent';
 

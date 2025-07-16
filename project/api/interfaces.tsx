@@ -1,10 +1,12 @@
 import { Color, Icon, Orientation } from './types'
 
+
 export interface PageButton {
   color: Color;
   isExternal: boolean;
   text: string;
   url: string;
+  textColor: Color;
 };
 
 export interface PageImage {

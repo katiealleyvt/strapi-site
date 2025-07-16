@@ -52,16 +52,14 @@ const Navigation: React.FC<NavigationProps> = ({ header }) => {
   const logoImage = `${HOST}${header?.logo?.url}`;
   console.log(logoImage);
   return (
-    <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <nav className="max-w-7xl mx-auto">
       <div className="flex items-center justify-between">
         <a href="/">
           {header?.logo?.url && <Image
-                    //src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b"
                     src={logoImage}
                     alt="Logo"
-                    width="30"
-                    style={{width:"100%", height:"30px"}}
-                    height="30"
+                    width="200"
+                    height="200"
                   />}
                   </a>
           {header?.navigation && 
