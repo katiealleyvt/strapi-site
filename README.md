@@ -2,6 +2,8 @@
 Contains frontend<br>
 ## Credit:
 - Used a strapi generated template
+- shadcn/ui components
+- Lucide react icons
 <br>
 Components/files created by me:
 <ul>
