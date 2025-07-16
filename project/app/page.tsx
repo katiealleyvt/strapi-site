@@ -3,14 +3,16 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { PageLink } from "@/components/page/pagelink";
 
-import { Bath, Calendar, Heart, Medal, Shield, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { fetchData, API_URL, HOST } from '../api/api.js';
 import { HomePage, Services, Hero, PageButton, DataResponse, Meta, Features } from '../api/interfaces.tsx';
 import React, { useEffect, useState } from 'react';
 import { parseJSON, setDate } from "date-fns";
-import Markdown from 'react-markdown'
+import HeroComponent from "@/components/page/hero.tsx";
+import ServicesComponent from "@/components/page/services.tsx";
+import FeaturesComponent from "@/components/page/features.tsx";
+
 
 
 
@@ -46,84 +48,18 @@ export default function Home() {
 
   
   //console.log(services)
-  const bgImage = `${HOST}${hero?.bgImage?.url}`;
 
-  const featuresSection = `py-16 bg-${features?.bgColor}`;
-  const featuresText = `text-3xl font-bold text-center mb-12 text-${features?.textColor}`
-  const featuresSvg = `w-12 h-12 mb-4 text-${features?.textColor}`
-  
-  const servicesSection = `py-16 bg-${services?.bgColor}}`;
-  const servicesText = `text-3xl font-bold text-center mb-12 ${services?.textColor}`;
-  
 
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative h-[600px]">
-        {hero?.bgImage?.url && <Image
-          //src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b"
-          src={bgImage}
-          alt="Happy dog being groomed"
-          fill
-          className="object-cover"
-          priority
-        />}
-        
-        <div className="absolute inset-0 bg-black/50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center text-white">
-            <div className="max-w-2xl">
-              <h1 className="text-5xl font-bold mb-6">{hero?.heading}</h1>
-              <p className="text-xl mb-8">{hero?.description}</p>
-              {hero?.buttons?.[0] && <PageLink {...hero.buttons[0]} />}
-              {hero?.buttons?.[1] && <PageLink {...hero.buttons[1]} />}
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroComponent hero={hero}/>
 
       {/* Features Section */}
-      <section className={featuresSection}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className={featuresText}>{features?.header}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {features?.Cards.map((card, index) => (
-         <Card key={card.id} color={card.bgColor || "white"}>
-         <CardHeader>
-          {card.svg == "medal" && <Medal className={featuresSvg}/>}
-          {card.svg == "heart" && <Heart className={featuresSvg} />}
-          {card.svg == "shield" && <Shield className={featuresSvg} />}
-
-           <CardTitle color={card.textColor || "black"}>{card.title}</CardTitle>
-           <CardDescription color={card.textColor || "black"}>{card.description}</CardDescription>
-         </CardHeader>
-       </Card>
-          ))}
-           
-          
-          </div>
-        </div>
-      </section>
+      <FeaturesComponent features={features}/>
 
       {/* Services Preview */}
-      <section className={servicesSection}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className={servicesText}>{services?.header}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {services?.services.map((service, index) => (
-            
-            <Card key={service.id} color={service.bgColor || "black"}>
-            <CardHeader>
-              <Bath className="w-12 h-12 text-secondary mb-4" />
-              <CardTitle color={service.textColor || "white"}>{service.title}</CardTitle>
-            </CardHeader>
-            <CardContent className="list-style-star" color={service.textColor || "white"}>
-              <Markdown>{service.description}</Markdown>
-            </CardContent>
-          </Card>
-          ))}
-          </div>
-        </div>
-      </section>
+      <ServicesComponent services={services}/>
     </div>
   );
 }

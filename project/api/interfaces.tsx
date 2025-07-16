@@ -30,6 +30,7 @@ export interface Hero extends Block {
   heading: string;
   buttons: PageButton[];
 };
+
 export interface Services extends Block {
   id: number;
   header: string,
