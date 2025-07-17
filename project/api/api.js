@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const HOST = "http://localhost:1337";
+export const HOST = process.env.NEXT_PUBLIC_API_HOST;
 export const API_URL = `${HOST}/api`; 
 
 export const fetchData = async (endpoint) => {
