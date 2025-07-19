@@ -16,7 +16,8 @@
       "components": [
         "blocks.hero",
         "blocks.features",
-        "blocks.services"
+        "blocks.services",
+        "blocks.contact"
       ]
     },
     "header": {

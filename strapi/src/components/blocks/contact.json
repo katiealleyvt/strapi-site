@@ -1,0 +1,58 @@
+{
+  "collectionName": "components_blocks_contacts",
+  "info": {
+    "displayName": "Contact"
+  },
+  "options": {},
+  "attributes": {
+    "header": {
+      "type": "string"
+    },
+    "bgColor": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary",
+        "tertiary",
+        "white",
+        "black"
+      ]
+    },
+    "textColor": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary",
+        "tertiary",
+        "white",
+        "black"
+      ]
+    },
+    "buttonText": {
+      "type": "string"
+    },
+    "buttonLink": {
+      "type": "string"
+    },
+    "buttonColor": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary",
+        "tertiary",
+        "white",
+        "black"
+      ]
+    },
+    "buttonTextColor": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary",
+        "tertiary",
+        "white",
+        "black"
+      ]
+    }
+  }
+}

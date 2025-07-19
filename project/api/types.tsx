@@ -1,5 +1,5 @@
 export type Color = 
-    "link" | "default" | "destructive" | "outline" | "primary" | "secondary" | "ghost" | null | undefined;
+    "link" | "default" | "destructive" | "outline" | "primary" | "secondary" | "ghost" | "white" | "black" | null | undefined;
 
 export type Icon = 
     "default" | "medal" | "heart" | "shield" | "bathtub" | "calendar" | null | undefined;

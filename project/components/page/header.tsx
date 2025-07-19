@@ -4,6 +4,7 @@ import Image from "next/image";
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from "../ui/navigation-menu";
 import { useEffect, useState } from "react";
 import { fetchData, HOST } from "@/api/api";
+import { cn } from '@/lib/utils';
 
 
 interface NavigationProps {
@@ -48,15 +49,13 @@ export default function Header({
 // Client-side navigation component
 const Navigation: React.FC<NavigationProps> = ({ header }) => {
   'use client';
-  
-  const logoImage = `${HOST}${header?.logo?.url}`;
-  console.log(logoImage);
+  "px-3 py-2 text-"
   return (
     <nav className="max-w-7xl mx-auto">
       <div className="flex items-center justify-between">
         <a href="/">
           {header?.logo?.url && <Image
-                    src={logoImage}
+                    src={header?.logo?.url}
                     alt="Logo"
                     width="200"
                     height="200"
@@ -68,7 +67,10 @@ const Navigation: React.FC<NavigationProps> = ({ header }) => {
           {header?.navigation.menuItems.map((page, index) => (
             <NavigationMenuItem key={page.id}>
               <a href={page.url}>
-                <NavigationMenuLink className="px-3 py-2">{page.title}</NavigationMenuLink>
+                <NavigationMenuLink className={cn(
+                        'px-3 py-2 text-xl hover:bg-black/20 hover:text-stone-200',
+                        `text-${header?.navigation.textColor}`
+                      )}>{page.title}</NavigationMenuLink>
               </a>
             </NavigationMenuItem>
           ))}

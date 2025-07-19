@@ -1,5 +1,29 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface BlocksContact extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_contacts';
+  info: {
+    displayName: 'Contact';
+  };
+  attributes: {
+    bgColor: Schema.Attribute.Enumeration<
+      ['primary', 'secondary', 'tertiary', 'white', 'black']
+    >;
+    buttonColor: Schema.Attribute.Enumeration<
+      ['primary', 'secondary', 'tertiary', 'white', 'black']
+    >;
+    buttonLink: Schema.Attribute.String;
+    buttonText: Schema.Attribute.String;
+    buttonTextColor: Schema.Attribute.Enumeration<
+      ['primary', 'secondary', 'tertiary', 'white', 'black']
+    >;
+    header: Schema.Attribute.String;
+    textColor: Schema.Attribute.Enumeration<
+      ['primary', 'secondary', 'tertiary', 'white', 'black']
+    >;
+  };
+}
+
 export interface BlocksFeatures extends Struct.ComponentSchema {
   collectionName: 'components_blocks_features';
   info: {
@@ -155,6 +179,7 @@ export interface ElementsService extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'blocks.contact': BlocksContact;
       'blocks.features': BlocksFeatures;
       'blocks.hero': BlocksHero;
       'blocks.services': BlocksServices;

@@ -11,12 +11,11 @@ interface HeroProps {
 }
 
 export default function Hero({ hero }: HeroProps){
-      const bgImage = `${HOST}${hero?.bgImage?.url}`;
 
     return(
           <section className="relative h-[600px]">
             {hero?.bgImage?.url && <Image
-              src={bgImage}
+              src={hero?.bgImage?.url}
               alt="Happy dog being groomed"
               fill
               className="object-cover"

@@ -38,6 +38,16 @@ export interface Services extends Block {
   textColor: Color,
   services: Card[]
 };
+export interface Contact extends Block {
+  id: number;
+  header: string,
+  bgColor: Color,
+  textColor: Color,
+  buttonText: string,
+  buttonColor: Color,
+  buttonTextColor: Color,
+  buttonLink: string
+};
 export interface Block {
   id: number;
 };
@@ -83,16 +93,3 @@ export interface HomePage extends DataItem {
     updatedAt: string;
 }
   
-export interface Meta {
-    pagination: {
-      // Define the properties of the pagination object here
-      // For example, if pagination has 'page' and 'total' properties:
-      page: number;
-      total: number;
-    };
-}
-  
-export interface DataResponse {
-    data: DataItem[];
-    meta: Meta;
-}

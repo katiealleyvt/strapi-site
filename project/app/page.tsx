@@ -6,12 +6,13 @@ import { PageLink } from "@/components/page/pagelink";
 import Image from "next/image";
 import Link from "next/link";
 import { fetchData, API_URL, HOST } from '../api/api.js';
-import { HomePage, Services, Hero, PageButton, DataResponse, Meta, Features } from '../api/interfaces.tsx';
+import { HomePage, Services, Hero, PageButton,  Features, Contact } from '../api/interfaces.tsx';
 import React, { useEffect, useState } from 'react';
 import { parseJSON, setDate } from "date-fns";
 import HeroComponent from "@/components/page/hero.tsx";
 import ServicesComponent from "@/components/page/services.tsx";
 import FeaturesComponent from "@/components/page/features.tsx";
+import ContactComponent from "@/components/page/contact.tsx";
 
 
 
@@ -24,6 +25,7 @@ export default function Home() {
   const [hero, setHero] = useState<Hero | undefined>(undefined);
   const [features, setFeatures] = useState<Features | undefined>(undefined);
   const [services, setServices] = useState<Services | undefined>(undefined);
+  const [contact, setContact] = useState<Contact | undefined>(undefined);
 
 
   useEffect(() => {
@@ -37,6 +39,8 @@ export default function Home() {
         setHero(homepageData?.blocks[0]);
         setFeatures(homepageData?.blocks[1])
         setServices(homepageData?.blocks[2])
+        setContact(homepageData?.blocks[3])
+
 
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -47,7 +51,6 @@ export default function Home() {
   }, []);
 
   
-  //console.log(services)
 
 
   return (
@@ -60,6 +63,8 @@ export default function Home() {
 
       {/* Services Preview */}
       <ServicesComponent services={services}/>
+      
+      <ContactComponent contact={contact}/>
     </div>
   );
 }

@@ -13,12 +13,10 @@ interface ServicesProps {
 }
 
 export default function Services({ services }: ServicesProps){
-  const servicesSection = `py-16 bg-${services?.bgColor}}`;
-    const servicesText = `text-3xl font-bold text-center mb-12 ${services?.textColor}`;
     return(
-          <section className={servicesSection}>
+          <section className={`py-16 bg-${services?.bgColor}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className={servicesText}>{services?.header}</h2>
+          <h2 className={`text-3xl font-bold text-center mb-12 text-${services?.textColor}`}>{services?.header}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {services?.services.map((service, index) => (
             
