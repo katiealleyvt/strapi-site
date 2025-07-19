@@ -1,5 +1,35 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface BlocksArticle extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_articles';
+  info: {
+    description: '';
+    displayName: 'Article';
+  };
+  attributes: {
+    bgColor: Schema.Attribute.Enumeration<
+      ['primary', 'secondary', 'tertiary', 'black', 'white']
+    >;
+    buttonColor: Schema.Attribute.Enumeration<
+      ['primary', 'secondary', 'tertiary', 'black', 'white']
+    >;
+    buttonLink: Schema.Attribute.String;
+    buttonText: Schema.Attribute.String;
+    buttonTextColor: Schema.Attribute.Enumeration<
+      ['primary', 'secondary', 'tertiary', 'black', 'white']
+    >;
+    description: Schema.Attribute.Text;
+    header: Schema.Attribute.String;
+    headerColor: Schema.Attribute.Enumeration<
+      ['primary', 'secondary', 'tertiary', 'black', 'white']
+    >;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    textColor: Schema.Attribute.Enumeration<
+      ['primary', 'secondary', 'tertiary', 'black', 'white']
+    >;
+  };
+}
+
 export interface BlocksContact extends Struct.ComponentSchema {
   collectionName: 'components_blocks_contacts';
   info: {
@@ -179,6 +209,7 @@ export interface ElementsService extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'blocks.article': BlocksArticle;
       'blocks.contact': BlocksContact;
       'blocks.features': BlocksFeatures;
       'blocks.hero': BlocksHero;

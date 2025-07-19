@@ -48,6 +48,19 @@ export interface Contact extends Block {
   buttonTextColor: Color,
   buttonLink: string
 };
+export interface Article extends Block {
+  id: number;
+  header: string,
+  bgColor: Color,
+  headerColor: Color,
+  textColor: Color,
+  buttonText: string,
+  buttonColor: Color,
+  buttonTextColor: Color,
+  buttonLink: string,
+  image: PageImage,
+  description: string
+};
 export interface Block {
   id: number;
 };

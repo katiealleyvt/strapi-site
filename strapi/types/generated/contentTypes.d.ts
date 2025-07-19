@@ -448,7 +448,13 @@ export interface ApiHomePageHomePage extends Struct.CollectionTypeSchema {
   };
   attributes: {
     blocks: Schema.Attribute.DynamicZone<
-      ['blocks.hero', 'blocks.features', 'blocks.services', 'blocks.contact']
+      [
+        'blocks.hero',
+        'blocks.features',
+        'blocks.services',
+        'blocks.contact',
+        'blocks.article',
+      ]
     >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

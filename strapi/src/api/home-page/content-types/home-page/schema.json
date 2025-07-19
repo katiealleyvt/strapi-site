@@ -17,7 +17,8 @@
         "blocks.hero",
         "blocks.features",
         "blocks.services",
-        "blocks.contact"
+        "blocks.contact",
+        "blocks.article"
       ]
     },
     "header": {

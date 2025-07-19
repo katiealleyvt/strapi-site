@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { HomePage, Hero, PageButton, DataResponse, Meta } from '../../api/interfaces.tsx';
+import { HomePage, Hero, PageButton } from '../../api/interfaces.tsx';
 
 
 
