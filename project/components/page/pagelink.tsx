@@ -9,7 +9,7 @@ export const PageLink: React.FC<PageButton> = ({ color, isExternal, text, url })
 
     return(
         <Link href={url}>
-                <Button size="lg" className={`mr-4 text-md bg-${color} text-white hover:text-${color} hover:bg-white`}>{text}</Button>
+                <Button size="lg" className={`mr-4 text-md bg-${color} text-white hover:text-black hover:bg-white`}>{text}</Button>
         </Link>
     );
 }
