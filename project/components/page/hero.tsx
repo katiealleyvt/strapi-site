@@ -13,7 +13,7 @@ interface HeroProps {
 export default function Hero({ hero }: HeroProps){
 
     return(
-          <section className="relative h-[600px]">
+          <section className="relative h-[800px]">
             {hero?.bgImage?.url && <Image
               src={hero?.bgImage?.url}
               alt="Happy dog being groomed"

@@ -11,7 +11,12 @@
       "enum": [
         "medal",
         "heart",
-        "shield"
+        "shield",
+        "default",
+        "bath",
+        "calendar",
+        "scissors",
+        "paw"
       ]
     },
     "title": {

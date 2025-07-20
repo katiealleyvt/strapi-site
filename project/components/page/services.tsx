@@ -1,11 +1,12 @@
 'use client';
 import { useEffect, useState } from "react";
 import * as interfaces from "@/api/interfaces";
+import { Icon } from "@/api/types";
 import { fetchData } from '@/api/api.js';
 import Image from "next/image";
 import { PageLink } from "./pagelink";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Bath, Calendar, Heart, Medal, Shield, Star } from "lucide-react";
+import { Bath, Calendar, Heart, Medal, Shield, Star, Scissors, PawPrint, BathIcon } from "lucide-react";
 import Markdown from 'react-markdown'
 
 interface ServicesProps {
@@ -22,7 +23,10 @@ export default function Services({ services }: ServicesProps){
             
             <Card key={service.id} color={service.bgColor || "black"}>
             <CardHeader>
-              <Bath className="w-12 h-12 text-secondary mb-4" />
+              {service.svg == "scissors" && <Scissors className={`w-12 h-12 mb-4 text-${services?.bgColor}`}/>}
+              {service.svg == "paw" && <PawPrint className={`w-12 h-12 mb-4 text-${services?.bgColor}`}/>}
+              {service.svg == "heart" && <Heart className={`w-12 h-12 mb-4 text-${services?.bgColor}`}/>}
+              {service.svg == "bath" && <BathIcon className={`w-12 h-12 mb-4 text-${services?.bgColor}`}/>}
               <CardTitle color={service.textColor || "white"}>{service.title}</CardTitle>
             </CardHeader>
             <CardContent className="list-style-star" color={service.textColor || "white"}>

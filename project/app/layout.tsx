@@ -1,7 +1,7 @@
 
 'use client'
 import './globals.css';
-import { Inter } from 'next/font/google';
+import { Montserrat } from 'next/font/google';
 import { Metadata } from 'next';
 import React, { useEffect, useState, useContext } from 'react';
 import { fetchData, API_URL, HOST } from '../api/api.js';
@@ -9,7 +9,7 @@ import Image from "next/image";
 import Header from '@/components/page/header.tsx';
 
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Montserrat({ subsets: ["latin"]});
 
 
 // Client-side footer component
@@ -63,7 +63,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <header className="border-b bg-primary">
+        <header className="bg-primary">
           <Header/>
         </header>
         <main>{children}</main>

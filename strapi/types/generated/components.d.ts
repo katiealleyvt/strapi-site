@@ -131,7 +131,18 @@ export interface ElementsCard extends Struct.ComponentSchema {
       ['primary', 'secondary', 'tertiary', 'white', 'black']
     >;
     description: Schema.Attribute.RichText;
-    svg: Schema.Attribute.Enumeration<['medal', 'heart', 'shield']>;
+    svg: Schema.Attribute.Enumeration<
+      [
+        'medal',
+        'heart',
+        'shield',
+        'default',
+        'bath',
+        'calendar',
+        'scissors',
+        'paw',
+      ]
+    >;
     textColor: Schema.Attribute.Enumeration<
       ['primary', 'secondary', 'tertiary', 'white', 'black']
     >;

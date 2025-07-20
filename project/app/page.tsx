@@ -42,7 +42,7 @@ export default function Home() {
         setFeatures(homepageData?.blocks[1])
         setServices(homepageData?.blocks[2])
         setContact(homepageData?.blocks[3])
-        setArticle(homepageData?.blocks[3])
+        setArticle(homepageData?.blocks[4])
 
 
       } catch (error) {
@@ -54,7 +54,7 @@ export default function Home() {
   }, []);
 
   
-
+console.log(article);
 
   return (
     <div>
@@ -68,7 +68,7 @@ export default function Home() {
       <ServicesComponent services={services}/>
       
       <ContactComponent contact={contact}/>
-      <ArticleComponent />
+      <ArticleComponent article={article}/>
     </div>
   );
 }

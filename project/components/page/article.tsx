@@ -14,17 +14,21 @@ interface ArticleProps {
 export default function ArticleComponent({ article }: ArticleProps){
 
     return(
-          <section className={`py-16 pb-32`}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {article?.image?.url &&
-            <div>
-               <Image src={article?.image?.url} alt={article?.image?.name}></Image>
+          <section className={`py-16 pb-32 bg-${article?.bgColor}`}>
+          <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex`}>
+            <div className="w-1/2">
+            {article?.image?.url && <Image
+                                src={article?.image?.url}
+                                alt={article?.image?.name}
+                                width="500"
+                                height="300"
+                                className="rounded-lg"
+                              />}
             </div>
-            }
-            <div>
-              <h2>{article?.header}</h2>
-              <p>{article?.headerColor}</p>
-              <a href="">READ MORE</a>
+            <div className="w-1/2">
+              <h2 className={`text-${article?.headerColor} text-3xl font-bold text-left my-6`}>{article?.header}</h2>
+              <p className={`text-${article?.textColor} mb-8 text-xl leading-8`}>{article?.description}</p>
+              <a href={article?.buttonLink} className={`text-${article?.buttonTextColor} bg-${article?.buttonColor} text-lg p-3 font-bold text-center`}>{article?.buttonText}</a>
             </div>
           </div>
           </section>

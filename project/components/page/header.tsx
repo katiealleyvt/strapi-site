@@ -49,7 +49,6 @@ export default function Header({
 // Client-side navigation component
 const Navigation: React.FC<NavigationProps> = ({ header }) => {
   'use client';
-  "px-3 py-2 text-"
   return (
     <nav className="max-w-7xl mx-auto">
       <div className="flex items-center justify-between">
@@ -57,8 +56,8 @@ const Navigation: React.FC<NavigationProps> = ({ header }) => {
           {header?.logo?.url && <Image
                     src={header?.logo?.url}
                     alt="Logo"
-                    width="200"
-                    height="200"
+                    width="300"
+                    height="100"
                   />}
                   </a>
           {header?.navigation && 
@@ -68,7 +67,7 @@ const Navigation: React.FC<NavigationProps> = ({ header }) => {
             <NavigationMenuItem key={page.id}>
               <a href={page.url}>
                 <NavigationMenuLink className={cn(
-                        'px-3 py-2 text-xl hover:bg-black/20 hover:text-stone-200',
+                        'px-3 py-2 text-xl hover:bg-black/20 hover:text-stone-200 transition',
                         `text-${header?.navigation.textColor}`
                       )}>{page.title}</NavigationMenuLink>
               </a>

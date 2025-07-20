@@ -8,7 +8,10 @@
   --background-end-rgb: 255, 255, 255;
   --bg-primary: 
 }
-
+body{
+    font-weight: normal;
+    font-size: 18px;
+}
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
