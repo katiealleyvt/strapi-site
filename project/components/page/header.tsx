@@ -56,21 +56,19 @@ const Navigation: React.FC<NavigationProps> = ({ header }) => {
           {header?.logo?.url && <Image
                     src={header?.logo?.url}
                     alt="Logo"
-                    width="300"
+                    width="250"
                     height="100"
                   />}
                   </a>
           {header?.navigation && 
           <NavigationMenu>
-          <NavigationMenuList>
+          <NavigationMenuList className="gap-4">
           {header?.navigation.menuItems.map((page, index) => (
-            <NavigationMenuItem key={page.id}>
-              <a href={page.url}>
-                <NavigationMenuLink className={cn(
-                        'px-3 py-2 text-xl hover:bg-black/20 hover:text-stone-200 transition',
-                        `text-${header?.navigation.textColor}`
-                      )}>{page.title}</NavigationMenuLink>
-              </a>
+            <NavigationMenuItem key={page.id} className={`group/item`}>
+                <NavigationMenuLink href={page.url} className={` py-2 text-xl group-hover/item:text-stone-300 rounded-md transition text-center text-${header?.navigation.textColor}`}>
+                {page.title}
+                <div className={`transition-all bg-stone-300 w-0 group-hover/item:w-full h-[2px]`}></div>
+                </NavigationMenuLink>
             </NavigationMenuItem>
           ))}
           </NavigationMenuList>

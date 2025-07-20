@@ -23,10 +23,10 @@ export default function Services({ services }: ServicesProps){
             
             <Card key={service.id} color={service.bgColor || "black"}>
             <CardHeader>
-              {service.svg == "scissors" && <Scissors className={`w-12 h-12 mb-4 text-${services?.bgColor}`}/>}
-              {service.svg == "paw" && <PawPrint className={`w-12 h-12 mb-4 text-${services?.bgColor}`}/>}
-              {service.svg == "heart" && <Heart className={`w-12 h-12 mb-4 text-${services?.bgColor}`}/>}
-              {service.svg == "bath" && <BathIcon className={`w-12 h-12 mb-4 text-${services?.bgColor}`}/>}
+              {service.svg == "scissors" && <Scissors className={`w-12 h-12 mb-4 text-primary`} />}
+              {service.svg == "paw" && <PawPrint className={`w-12 h-12 mb-4 text-primary`}/>}
+              {service.svg == "heart" && <Heart className={`w-12 h-12 mb-4 text-primary`}/>}
+              {service.svg == "bath" && <BathIcon className={`w-12 h-12 mb-4 text-primary`}/>}
               <CardTitle color={service.textColor || "white"}>{service.title}</CardTitle>
             </CardHeader>
             <CardContent className="list-style-star" color={service.textColor || "white"}>

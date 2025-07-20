@@ -25,7 +25,7 @@ export default function ArticleComponent({ article }: ArticleProps){
                                 className="rounded-lg"
                               />}
             </div>
-            <div className="w-1/2">
+            <div className="w-1/2 h-full place-items-center">
               <h2 className={`text-${article?.headerColor} text-3xl font-bold text-left my-6`}>{article?.header}</h2>
               <p className={`text-${article?.textColor} mb-8 text-xl leading-8`}>{article?.description}</p>
               <a href={article?.buttonLink} className={`text-${article?.buttonTextColor} bg-${article?.buttonColor} text-lg p-3 font-bold text-center`}>{article?.buttonText}</a>
