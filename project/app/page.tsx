@@ -6,7 +6,7 @@ import { PageLink } from "@/components/page/pagelink";
 import Image from "next/image";
 import Link from "next/link";
 import { fetchData, API_URL, HOST } from '../api/api.js';
-import { HomePage, Services, Hero, PageButton,  Features, Contact, Article } from '../api/interfaces.tsx';
+import { Page, Services, Hero, PageButton,  Features, Contact, Article } from '../api/interfaces.tsx';
 import React, { useEffect, useState } from 'react';
 import { parseJSON, setDate } from "date-fns";
 import HeroComponent from "@/components/page/hero.tsx";
@@ -22,7 +22,7 @@ export default function Home() {
 
   
 
-  const [homepage, setHomepage] = useState<HomePage | null>(null);
+  const [homepage, setHomepage] = useState<Page | null>(null);
   const [hero, setHero] = useState<Hero | undefined>(undefined);
   const [features, setFeatures] = useState<Features | undefined>(undefined);
   const [services, setServices] = useState<Services | undefined>(undefined);
@@ -34,7 +34,7 @@ export default function Home() {
     const getHomepage = async () => {
       try {
         const result = await fetchData('/home-pages?populate[blocks][populate]=*');
-        const homepageData = result.data[0];
+        const homepageData = result.data.find((el: any) => el.pageKey == 'home')
         console.log(result);
         // Set homepage and hero state
         setHomepage(homepageData);

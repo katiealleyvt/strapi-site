@@ -4,7 +4,7 @@
   "info": {
     "singularName": "home-page",
     "pluralName": "home-pages",
-    "displayName": "Home Page",
+    "displayName": "Page",
     "description": ""
   },
   "options": {
@@ -25,6 +25,9 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::header.header"
+    },
+    "pageKey": {
+      "type": "uid"
     }
   }
 }

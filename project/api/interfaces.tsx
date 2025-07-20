@@ -1,3 +1,4 @@
+import { UUID } from 'crypto';
 import { Color, Icon, Orientation } from './types'
 
 
@@ -63,6 +64,7 @@ export interface Article extends Block {
 };
 export interface Block {
   id: number;
+  __component: string;
 };
 export interface Card {
   id: number;
@@ -94,9 +96,10 @@ export interface MarkdownListItem {
   id: number;
   text: string;
 };
-export interface HomePage extends DataItem {
+export interface Page extends DataItem {
     blocks: Block[];
     header: Header;
+    pageKey: string;
 }
   export interface DataItem {
     createdAt: string;

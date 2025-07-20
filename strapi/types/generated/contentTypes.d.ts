@@ -439,7 +439,7 @@ export interface ApiHomePageHomePage extends Struct.CollectionTypeSchema {
   collectionName: 'home_pages';
   info: {
     description: '';
-    displayName: 'Home Page';
+    displayName: 'Page';
     pluralName: 'home-pages';
     singularName: 'home-page';
   };
@@ -466,6 +466,7 @@ export interface ApiHomePageHomePage extends Struct.CollectionTypeSchema {
       'api::home-page.home-page'
     > &
       Schema.Attribute.Private;
+    pageKey: Schema.Attribute.UID;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
