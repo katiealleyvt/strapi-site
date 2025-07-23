@@ -18,7 +18,8 @@
         "blocks.features",
         "blocks.services",
         "blocks.contact",
-        "blocks.article"
+        "blocks.article",
+        "blocks.photobooth"
       ]
     },
     "header": {

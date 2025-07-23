@@ -454,6 +454,7 @@ export interface ApiHomePageHomePage extends Struct.CollectionTypeSchema {
         'blocks.services',
         'blocks.contact',
         'blocks.article',
+        'blocks.photobooth',
       ]
     >;
     createdAt: Schema.Attribute.DateTime;

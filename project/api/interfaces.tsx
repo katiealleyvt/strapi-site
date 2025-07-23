@@ -62,6 +62,13 @@ export interface Article extends Block {
   image: PageImage,
   description: string
 };
+export interface Photobooth extends Block {
+  id: number;
+  header: string,
+  bgColor: Color,
+  headerColor: Color,
+  images: PageImage[]
+};
 export interface Block {
   id: number;
   __component: string;

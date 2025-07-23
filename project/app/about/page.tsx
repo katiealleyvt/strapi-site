@@ -6,7 +6,7 @@ import { PageLink } from "@/components/page/pagelink";
 import Image from "next/image";
 import Link from "next/link";
 import { fetchData, API_URL, HOST } from '../../api/api.js';
-import { Page, Services, Hero, PageButton,  Features, Contact, Article } from '../../api/interfaces.tsx';
+import { Page, Services, Hero, PageButton,  Features, Contact, Article, Photobooth } from '../../api/interfaces.tsx';
 import React, { useEffect, useState } from 'react';
 import { parseJSON, setDate } from "date-fns";
 import HeroComponent from "@/components/page/hero.tsx";
@@ -14,6 +14,7 @@ import ServicesComponent from "@/components/page/services.tsx";
 import FeaturesComponent from "@/components/page/features.tsx";
 import ContactComponent from "@/components/page/contact.tsx";
 import ArticleComponent from "@/components/page/article.tsx";
+import PhotoboothComponent from "@/components/page/photobooth.tsx";
 
 
 
@@ -49,6 +50,9 @@ export default function About() {
         {page?.blocks.map((block, index) => {
             if(block.__component === 'blocks.article'){
                 return <ArticleComponent key={index} article={block as Article} />;
+            }
+            if(block.__component === 'blocks.photobooth'){
+                return <PhotoboothComponent key={index} photobooth={block as Photobooth} />;
             }
             return null;
         })}

@@ -85,6 +85,26 @@ export interface BlocksHero extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksPhotobooth extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_photobooths';
+  info: {
+    displayName: 'Photobooth';
+  };
+  attributes: {
+    bgColor: Schema.Attribute.Enumeration<
+      ['primary', 'secondary', 'tertiary', 'black', 'white']
+    >;
+    header: Schema.Attribute.String;
+    headerColor: Schema.Attribute.Enumeration<
+      ['primary', 'secondary', 'tertiary', 'black', 'white']
+    >;
+    images: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+  };
+}
+
 export interface BlocksServices extends Struct.ComponentSchema {
   collectionName: 'components_blocks_services';
   info: {
@@ -224,6 +244,7 @@ declare module '@strapi/strapi' {
       'blocks.contact': BlocksContact;
       'blocks.features': BlocksFeatures;
       'blocks.hero': BlocksHero;
+      'blocks.photobooth': BlocksPhotobooth;
       'blocks.services': BlocksServices;
       'elements.button': ElementsButton;
       'elements.card': ElementsCard;
