@@ -6,8 +6,7 @@ import { PageLink } from "./pagelink";
 import { HOST } from '@/api/api.js';
 import { cn } from "@/lib/utils";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import { Card, CardContent } from "../ui/card";
-import { AspectRatio } from "../ui/aspect-ratio";
+import { Card } from "../ui/card";
 
 
 interface PhotoboothProps {
@@ -15,24 +14,21 @@ interface PhotoboothProps {
 }
 
 export default function PhotoboothComponent({ photobooth }: PhotoboothProps){
-// shad components
-// scrollable
-// aspect ratio
-// card
+                   
+
+console.log(photobooth);
     return(
-          <section className={`h-48 lg:w-3/5 xs:w-full flex justify-center mx-auto p-3 rounded-lg shadow-sm hover:shadow-xl transition bg-${photobooth?.bgColor}`}>
+          <section className={` transition bg-${photobooth?.bgColor} lg:w-2/3 xs:w-full mx-auto`}>
             {photobooth?.header && <h1 className={`text-2xl text-${photobooth?.headerColor}`}>{photobooth?.header}</h1>}
 
-          <ScrollArea>
+          <ScrollArea className="w-full rounded-md border whitespace-nowrap">
+            <div className="flex space-x-4 p-4">
             {photobooth?.images.map((image, index) => (
-                <Card key={`image-${index}`}>
-                    <CardContent>
-                        <AspectRatio ratio={16/9}>
-                        <Image src={image.url} alt={image.name} />
-                        </AspectRatio>
-                    </CardContent>
-                </Card>
+                <Card className={"w-[350px]"}>
+                        <Image src={image.url} alt={image.name} width="533" height="300" className="aspect-[4/3] h-fit object-cover"/>
+                        </Card>
             ))}
+            </div>
             <ScrollBar orientation="horizontal"/>
           </ScrollArea>
           </section>
